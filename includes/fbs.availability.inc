@@ -89,7 +89,7 @@ function fbs_availability_holdings($provider_ids) {
       $entity_id = ding_provider_build_entity_id($provider_ids[0]);
       $suffix_type = variable_get('fbs_holdings_suffix_type', 'simple');
 
-      if ($suffix_type == 'simple' && $entity = ding_entity_load($entity_id)) {
+      if (($suffix_type == 'simple' && $entity = ding_entity_load($entity_id)) || strpos($_SERVER['HTTP_REFERER'], '/search/ting/') !== false) {
         // Get DK5 classification.
         if ($classification = $entity->getClassification()) {
           $result_holding['placement'][] = $classification;
