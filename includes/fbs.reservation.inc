@@ -219,7 +219,7 @@ function fbs_reservation_default_options($account) {
  * @return array
  *   The reservation options.
  */
-function fbs_reservation_options($account, $default_branch) {
+function fbs_reservation_options($account, $default_branch = null) {
   $patron_info = fbs_get_patron_info($account);
 
   $preferred_branch = empty($default_branch) ? $patron_info['preferred_branch'] : $default_branch;
